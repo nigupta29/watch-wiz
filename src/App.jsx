@@ -1,8 +1,9 @@
+import Navbar from './components/Navbar'
+
 const App = () => {
   return (
-    <div className="tracking-tighter">
-      <h1 className="text-3xl font-bold">Watch Wiz!</h1>
-      <p className="text-xl text-gray-900">Discover. Stream. Enjoy.</p>
+    <div className="bg-gray-900 tracking-tighter text-white">
+      <Navbar />
     </div>
   )
 }
