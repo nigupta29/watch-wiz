@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 
 const DisplayLayout = ({ title }) => {
+  if (title === '') title = 'trending'
   const modifiedTitle = title.charAt(0).toUpperCase() + title.slice(1)
 
   return (
@@ -8,10 +9,6 @@ const DisplayLayout = ({ title }) => {
       <h2 className="text-4xl">{`${modifiedTitle} Movies`}</h2>
     </main>
   )
-}
-
-DisplayLayout.defaultProps = {
-  title: 'trending',
 }
 
 DisplayLayout.propTypes = {

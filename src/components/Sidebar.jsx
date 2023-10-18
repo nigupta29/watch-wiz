@@ -1,6 +1,7 @@
 import { StopCircleIcon } from '@heroicons/react/24/solid'
+import PropTypes from 'prop-types'
 
-const Sidebar = () => {
+const Sidebar = ({ selectGenre }) => {
   const genreData = {
     genres: [
       {
@@ -86,14 +87,23 @@ const Sidebar = () => {
     <aside className="max-w-xs px-8 py-4">
       <ul className="flex flex-col gap-3">
         {genreData.genres.map((genre) => (
-          <li key={genre.id} className="group flex cursor-pointer gap-1">
+          <li
+            key={genre.id}
+            className="group flex cursor-pointer gap-1"
+            onClick={() => selectGenre(genre.name)}
+          >
             <StopCircleIcon className="h-7 w-7 group-hover:animate-spin" />
-            <h4 className="text-lg group-hover:text-amber-500">{genre.name}</h4>
+            <h4 className="text-lg group-hover:ml-1 group-hover:text-amber-500">
+              {genre.name}
+            </h4>
           </li>
         ))}
       </ul>
     </aside>
   )
+}
+Sidebar.propTypes = {
+  selectGenre: PropTypes.func.isRequired,
 }
 
 export default Sidebar
