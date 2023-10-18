@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <header className="flex items-center gap-8 px-8 py-4">
-      <FilmIcon className="w-10" role="button" />
+      <FilmIcon className="h-10 w-10 hover:fill-amber-500" role="button" />
       <form
         onSubmit={handleSubmit}
         className="flex flex-grow items-center overflow-hidden rounded-2xl"
@@ -35,9 +35,12 @@ const Navbar = () => {
       </form>
 
       {/* TODO: Redirects to the Trending Page */}
-      <FireIcon className="w-10" role="button" />
+      <FireIcon className="h-10 w-10 hover:fill-amber-500" role="button" />
       {/* TODO: Redirects to the About Page */}
-      <BuildingStorefrontIcon className="w-10" role="button" />
+      <BuildingStorefrontIcon
+        className="h-10 w-10 hover:fill-amber-500"
+        role="button"
+      />
     </header>
   )
 }
