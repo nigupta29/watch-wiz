@@ -1,7 +1,8 @@
 import axios from 'axios'
+import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
-const DisplayCardList = () => {
+const DisplayCardList = ({ genreId }) => {
   const [loading, setLoading] = useState(true)
   const [trendingMovies, setTrendingMovies] = useState([])
 
@@ -11,8 +12,17 @@ const DisplayCardList = () => {
       headers: { Authorization: `Bearer ${apiKey}` },
     }
 
+    let apiUrl = ''
+
+    if (genreId === 'trending') {
+      apiUrl = `https://api.themoviedb.org/3/trending/movie/week?page=1`
+    } else {
+      apiUrl = `https://api.themoviedb.org/3/discover/movie?page=1&with_genres=${genreId}`
+    }
+
+    setLoading(true)
     axios
-      .get(`https://api.themoviedb.org/3/trending/movie/week?page=1`, config)
+      .get(apiUrl, config)
       .then((response) => {
         const trendingMovies = response.data.results
         setTrendingMovies(trendingMovies)
@@ -21,7 +31,7 @@ const DisplayCardList = () => {
       .catch((error) => {
         console.error('Error fetching trending movies:', error)
       })
-  }, [])
+  }, [apiKey, genreId])
 
   if (loading) return <h3 className="text-xl">Loading...</h3>
 
@@ -34,7 +44,6 @@ const DisplayCardList = () => {
               className="w-full rounded-2xl"
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
-              loading="lazy"
             />
           </div>
           <div className="text-xl font-bold">{movie.title}</div>
@@ -42,6 +51,10 @@ const DisplayCardList = () => {
       ))}
     </ul>
   )
+}
+
+DisplayCardList.propTypes = {
+  genreId: PropTypes.string.isRequired,
 }
 
 export default DisplayCardList

@@ -90,7 +90,7 @@ const Sidebar = ({ selectGenre }) => {
           <li
             key={genre.id}
             className="group flex cursor-pointer gap-1"
-            onClick={() => selectGenre(genre.name)}
+            onClick={() => selectGenre(genre)}
           >
             <StopCircleIcon className="h-7 w-7 group-hover:animate-spin" />
             <h4 className="text-lg group-hover:text-amber-500">{genre.name}</h4>
