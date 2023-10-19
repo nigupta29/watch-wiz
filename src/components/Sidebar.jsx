@@ -84,7 +84,7 @@ const Sidebar = ({ selectGenre }) => {
   }
 
   return (
-    <aside className="max-w-xs px-8 py-4">
+    <aside className="min-w-max px-8 py-4">
       <ul className="flex flex-col gap-3">
         {genreData.genres.map((genre) => (
           <li
@@ -93,9 +93,7 @@ const Sidebar = ({ selectGenre }) => {
             onClick={() => selectGenre(genre.name)}
           >
             <StopCircleIcon className="h-7 w-7 group-hover:animate-spin" />
-            <h4 className="text-lg group-hover:ml-1 group-hover:text-amber-500">
-              {genre.name}
-            </h4>
+            <h4 className="text-lg group-hover:text-amber-500">{genre.name}</h4>
           </li>
         ))}
       </ul>
