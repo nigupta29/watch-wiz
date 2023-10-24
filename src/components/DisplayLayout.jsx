@@ -8,7 +8,7 @@ const DisplayLayout = ({ genre }) => {
 
   return (
     <main className="mb-10 px-8 py-4">
-      <h2 className="mb-5 text-4xl">{`${modifiedTitle} Movies`}</h2>
+      <h2 className="mb-5 text-4xl font-bold">{`${modifiedTitle} Movies`}</h2>
       <DisplayCardList genreId={String(id)} />
     </main>
   )
